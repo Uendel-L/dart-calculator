@@ -4,25 +4,29 @@ import 'dart:io';
 class Calculadora {
     dynamic number1;
     dynamic number2;
+    dynamic operator;
 
-    Calculadora({this.number1=null, this.number2=null}){
+    Calculadora({this.number1=null, this.number2=null, this.operator=null}){
     }
 
-    double soma(number1, number2){
-      return number1 + number2;
+    double operation(number1, number2, operator){
+      if (operator == '+'){
+        return number1 + number2;
+      }
+
+      else if (operator == '-'){
+        return number1 - number2;
+      }
+      
+      else if (operator == '/'){
+        return number1 / number2;
+      }
+
+      else{
+        return number1 * number2;
+      }
     }
 
-    double subtracao(number1, number2){
-      return number1 - number2;
-    }
-
-    double divisao(number1, number2){
-      return number1 / number2;
-    }
-
-    double multiplicacao(number1, number2){
-      return number1 * number2;
-    }
 }
 try_catch_int(){
   try{
@@ -58,6 +62,13 @@ try_catch_double(int number){
   }
 }
 
+dynamic getnumbers(){
+  dynamic x = [];
+  x.add(try_catch_double(1));
+  x.add(try_catch_double(2));
+  return x;
+}
+
 void main() {
   Calculadora calc = Calculadora();
 
@@ -77,27 +88,23 @@ void main() {
       int opcao = try_catch_int();
 
       if (opcao == 1){
-        double x = try_catch_double(1);
-        double y = try_catch_double(2);
-        print("A soma entre $x e $y é igual a: ${calc.soma(x,y)}");
+        dynamic x = getnumbers();
+        print("A soma entre ${x[0]} e ${x[1]} é igual a: ${calc.operation(x[0],x[1],'+')}");
       }
 
       else if (opcao == 2){
-        double x = try_catch_double(1);
-        double y = try_catch_double(2);
-        print("A subtração entre $x e $y é igual a: ${calc.subtracao(x,y)}");
+        dynamic x = getnumbers();
+        print("A subtração entre ${x[0]} e ${x[1]} é igual a: ${calc.operation(x[0],x[1],'-')}");
       }
 
       else if (opcao == 3){
-        double x = try_catch_double(1);
-        double y = try_catch_double(2);
-        print("A divisão entre $x e $y é igual a: ${calc.divisao(x,y)}");
+        dynamic x = getnumbers();
+        print("A divisão entre ${x[0]} e ${x[1]} é igual a: ${calc.operation(x[0],x[1],'/')}");
       }
 
       else if (opcao == 4){
-        double x = try_catch_double(1);
-        double y = try_catch_double(2);
-        print("A multiplicação entre $x e $y é igual a: ${calc.multiplicacao(x,y)}");
+        dynamic x = getnumbers();
+        print("A multiplicação entre ${x[0]} e ${x[1]} é igual a: ${calc.operation(x[0],x[1],'*')}");
       }
 
       else if (opcao == 0){

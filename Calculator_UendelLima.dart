@@ -2,27 +2,25 @@
 import 'dart:io';
 
 class Calculadora {
-    var number1;
-    var number2;
+    dynamic number1;
+    dynamic number2;
 
-    Calculadora(number1, number2){
-      this.number1 = number1;
-      this.number2 = number2;
+    Calculadora({this.number1=null, this.number2=null}){
     }
 
-    double soma(){
+    double soma(number1, number2){
       return number1 + number2;
     }
 
-    double subtracao(){
+    double subtracao(number1, number2){
       return number1 - number2;
     }
 
-    double divisao(){
+    double divisao(number1, number2){
       return number1 / number2;
     }
 
-    double multiplicacao(){
+    double multiplicacao(number1, number2){
       return number1 * number2;
     }
 }
@@ -61,6 +59,7 @@ try_catch_double(int number){
 }
 
 void main() {
+  Calculadora calc = Calculadora();
 
   print("---------------------------------------");
   print("Bem vindo à sua calculadora");
@@ -80,29 +79,25 @@ void main() {
       if (opcao == 1){
         double x = try_catch_double(1);
         double y = try_catch_double(2);
-        Calculadora calc = Calculadora(x,y);
-        print("A soma entre $x e $y é igual a: ${calc.soma()}");
+        print("A soma entre $x e $y é igual a: ${calc.soma(x,y)}");
       }
 
       else if (opcao == 2){
         double x = try_catch_double(1);
         double y = try_catch_double(2);
-        Calculadora calc = Calculadora(x,y);
-        print("A subtração entre $x e $y é igual a: ${calc.subtracao()}");
+        print("A subtração entre $x e $y é igual a: ${calc.subtracao(x,y)}");
       }
 
       else if (opcao == 3){
         double x = try_catch_double(1);
         double y = try_catch_double(2);
-        Calculadora calc = Calculadora(x,y);
-        print("A divisão entre $x e $y é igual a: ${calc.divisao()}");
+        print("A divisão entre $x e $y é igual a: ${calc.divisao(x,y)}");
       }
 
       else if (opcao == 4){
         double x = try_catch_double(1);
         double y = try_catch_double(2);
-        Calculadora calc = Calculadora(x,y);
-        print("A multiplicação entre $x e $y é igual a: ${calc.multiplicacao()}");
+        print("A multiplicação entre $x e $y é igual a: ${calc.multiplicacao(x,y)}");
       }
 
       else if (opcao == 0){
